@@ -1,0 +1,2344 @@
+// converted by version  [v3.0.4]
+// on Tue Feb 16 18:10:27 CET 2021
+
+.package pkgYkneoOath {
+	.aid 0xA0:0x0:0x0:0x5:0x27:0x21:0x1;
+	.version 1.0;
+
+	.imports {
+		0xA0:0x0:0x0:0x0:0x62:0x0:0x1 1.0;		//java/lang
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x2 1.5;		//javacard/security
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x1 1.5;		//javacard/framework
+	}
+
+	.applet {
+		0xA0:0x0:0x0:0x5:0x27:0x21:0x1:0x1 YkneoOath;
+	}
+
+	.constantPool {
+		// 0
+		instanceFieldRef short OathObj/counter;
+		// 1
+		instanceFieldRef boolean OathObj/active;
+		// 2
+		instanceFieldRef byte[] OathObj/inner;
+		// 3
+		instanceFieldRef byte[] OathObj/outer;
+		// 4
+		instanceFieldRef 1.11 OathObj/digest;
+		// 5
+		instanceFieldRef byte OathObj/type;
+		// 6
+		instanceFieldRef byte OathObj/digits;
+		// 7
+		instanceFieldRef byte[] OathObj/name;
+		// 8
+		instanceFieldRef short OathObj/nameLen;
+		// 9
+		instanceFieldRef byte OathObj/props;
+		// 10
+		instanceFieldRef byte[] OathObj/lastChal;
+		// 11
+		instanceFieldRef short OathObj/lastOffs;
+		// 12
+		instanceFieldRef OathObj OathObj/nextObject;
+		// 13
+		instanceFieldRef byte[] OathObj/imf;
+		// 14
+		instanceFieldRef byte[] YkneoOath/tempBuf;
+		// 15
+		instanceFieldRef byte[] YkneoOath/sendBuffer;
+		// 16
+		instanceFieldRef byte[] YkneoOath/propBuf;
+		// 17
+		instanceFieldRef 1.14 YkneoOath/rng;
+		// 18
+		instanceFieldRef byte[] YkneoOath/identity;
+		// 19
+		instanceFieldRef OathObj YkneoOath/authObj;
+		// 20
+		instanceFieldRef OathObj YkneoOath/scratchAuth;
+		// 21
+		staticFieldRef OathObj OathObj/firstObject;
+		// 22
+		staticFieldRef OathObj OathObj/lastObject;
+		// 23
+		staticFieldRef byte[] OathObj/scratchBuf;
+		// 24
+		virtualMethodRef OathObj/isActive()Z;
+		// 25
+		.classRef OathObj;
+		// 26
+		staticMethodRef OathObj/<init>()V;
+		// 27
+		virtualMethodRef OathObj/addObject()V;
+		// 28
+		staticMethodRef 2.16.0([BS[BSS)B;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+		// 29
+		staticMethodRef 2.16.3([BSSB)S;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+		// 30
+		staticMethodRef 2.16.6([BSS)S;		// javacard/framework/Util.setShort([BSS)S
+		// 31
+		staticMethodRef 2.16.2([BS[BSS)S;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+		// 32
+		virtualMethodRef 1.11.4()V;		// reset()V
+		// 33
+		virtualMethodRef 1.11.5([BSS)V;		// update([BSS)V
+		// 34
+		virtualMethodRef 1.11.1([BSS[BS)S;		// doFinal([BSS[BS)S
+		// 35
+		virtualMethodRef OathObj/calculate([BSS[BS)S;
+		// 36
+		virtualMethodRef 1.11.3()B;		// getLength()B
+		// 37
+		staticMethodRef 2.3.0()V;		// javacard/framework/Applet.<init>()V
+		// 38
+		staticMethodRef 2.8.13(SB)[B;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+		// 39
+		staticMethodRef 2.7.1(S)V;		// javacard/framework/ISOException.throwIt(S)V
+		// 40
+		staticFieldRef 1.11 OathObj/sha;
+		// 41
+		staticMethodRef 1.14.0(B)Ljavacard/security/RandomData;;		// javacard/security/RandomData.getInstance(B)Ljavacard/security/RandomData;
+			.descriptor	Ljavacard/security/RandomData;	1.14;
+
+		// 42
+		staticMethodRef 2.16.1([BS[BSS)S;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+		// 43
+		staticMethodRef 1.11.0(BZ)Ljavacard/security/MessageDigest;;		// javacard/security/MessageDigest.getInstance(BZ)Ljavacard/security/MessageDigest;
+			.descriptor	Ljavacard/security/MessageDigest;	1.11;
+
+		// 44
+		virtualMethodRef 1.14.1([BSS)V;		// generateData([BSS)V
+		// 45
+		staticMethodRef 0.0.0()V;		// java/lang/Object.<init>()V
+		// 46
+		staticFieldRef 1.11 OathObj/sha256;
+		// 47
+		.classRef YkneoOath;
+		// 48
+		staticMethodRef YkneoOath/<init>()V;
+		// 49
+		virtualMethodRef 2.3.2([BSB)V;		// register([BSB)V
+		// 50
+		virtualMethodRef 2.3.3()Z;		// selectingApplet()Z
+		// 51
+		virtualMethodRef 2.10.1()[B;		// getBuffer()[B
+		// 52
+		staticFieldRef byte[] YkneoOath/version;
+		// 53
+		virtualMethodRef OathObj/getType()B;
+		// 54
+		virtualMethodRef 2.10.8(SS)V;		// setOutgoingAndSend(SS)V
+		// 55
+		virtualMethodRef 2.10.6()S;		// setIncomingAndReceive()S
+		// 56
+		staticMethodRef 2.16.5(BB)S;		// javacard/framework/Util.makeShort(BB)S
+		// 57
+		staticMethodRef 2.8.1()V;		// javacard/framework/JCSystem.beginTransaction()V
+		// 58
+		staticMethodRef YkneoOath/handlePut([B)V;
+		// 59
+		staticMethodRef 2.8.2()V;		// javacard/framework/JCSystem.commitTransaction()V
+		// 60
+		staticMethodRef YkneoOath/handleDelete([B)V;
+		// 61
+		staticMethodRef YkneoOath/handleChangeCode([B)V;
+		// 62
+		staticMethodRef YkneoOath/handleReset()V;
+		// 63
+		staticMethodRef YkneoOath/handleList([B)S;
+		// 64
+		staticMethodRef YkneoOath/handleCalc([BB[B)S;
+		// 65
+		staticMethodRef YkneoOath/handleValidate([B[B)S;
+		// 66
+		staticMethodRef YkneoOath/handleCalcAll([BB[B)S;
+		// 67
+		staticMethodRef 2.16.4([BS)S;		// javacard/framework/Util.getShort([BS)S
+		// 68
+		staticMethodRef YkneoOath/sendData(Ljavacard/framework/APDU;S)V;
+			.descriptor	Ljavacard/framework/APDU;	2.10;
+
+		// 69
+		virtualMethodRef OathObj/setActive(Z)V;
+		// 70
+		staticMethodRef 2.8.18()V;		// javacard/framework/JCSystem.requestObjectDeletion()V
+		// 71
+		staticMethodRef YkneoOath/getLength([BS)S;
+		// 72
+		virtualMethodRef OathObj/getDigestLength()S;
+		// 73
+		staticMethodRef YkneoOath/getLengthBytes(S)S;
+		// 74
+		virtualMethodRef OathObj/setKey([BSBS)V;
+		// 75
+		staticMethodRef OathObj/findObject([BSS)LpkgYkneoOath/OathObj;;
+		// 76
+		virtualMethodRef OathObj/calculateTruncated([BSS[BS)S;
+		// 77
+		staticMethodRef YkneoOath/setLength([BSS)S;
+		// 78
+		virtualMethodRef OathObj/getDigits()B;
+		// 79
+		virtualMethodRef OathObj/getNameLength()S;
+		// 80
+		virtualMethodRef OathObj/getName([BS)S;
+		// 81
+		staticMethodRef YkneoOath/calculateTotalLen()S;
+		// 82
+		staticMethodRef OathObj/getFreeObject()LpkgYkneoOath/OathObj;;
+		// 83
+		virtualMethodRef OathObj/setName([BSS)V;
+		// 84
+		virtualMethodRef OathObj/setDigits(B)V;
+		// 85
+		virtualMethodRef OathObj/setProp(B)V;
+		// 86
+		virtualMethodRef OathObj/setImf([BS)V;
+		// 87
+		virtualMethodRef OathObj/clearImf()V;
+		// 88
+		staticMethodRef 2.10.1()S;		// javacard/framework/APDU.getOutBlockSize()S
+	}
+
+	.class public OathObj 0 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			public OathObj nextObject 0;		// LpkgYkneoOath/OathObj;
+			private byte[] name 1;		// [B
+			private byte[] imf 2;		// [B
+			private byte[] inner 3;		// [B
+			private byte[] outer 4;		// [B
+			private 1.11 digest 5;		// Ljavacard/security/MessageDigest;
+			private byte[] lastChal 6;		// [B
+			private short nameLen 7;		// S
+			private byte type 8;		// B
+			private byte digits 9;		// B
+			private short counter 10;		// S
+			private boolean active 11;		// Z
+			private short lastOffs 12;		// S
+			private byte props 13;		// B
+			public static final byte HMAC_MASK = 15;		// B
+			public static final byte HMAC_SHA1 = 1;		// B
+			public static final byte HMAC_SHA256 = 2;		// B
+			public static final byte OATH_MASK = -16;		// B
+			public static final byte HOTP_TYPE = 16;		// B
+			public static final byte TOTP_TYPE = 32;		// B
+			public static final byte PROP_ALWAYS_INCREASING = 1;		// B
+			public static final byte IMF_LEN = 4;		// B
+			public static OathObj firstObject 0;		// LpkgYkneoOath/OathObj;
+			public static OathObj lastObject 1;		// LpkgYkneoOath/OathObj;
+			private static final short _0 = 0;		// S
+			private static final byte hmac_buf_size = 64;		// B
+			private static final short NAME_LEN = 64;		// S
+			private static 1.11 sha;		// Ljavacard/security/MessageDigest;
+			private static 1.11 sha256;		// Ljavacard/security/MessageDigest;
+			private static byte[] scratchBuf;		// [B
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+			setKey([BSBS)V;
+			setDigits(B)V;
+			getDigits()B;
+			getType()B;
+			setName([BSS)V;
+			getName([BS)S;
+			getNameLength()S;
+			setProp(B)V;
+			addObject()V;
+			calculate([BSS[BS)S;
+			calculateTruncated([BSS[BS)S;
+			getDigestLength()S;
+			isActive()Z;
+			setActive(Z)V;
+			setImf([BS)V;
+			clearImf()V;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 2;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 45;		// java/lang/Object.<init>()V
+					aload_0;
+					sconst_0;
+					putfield_s 0;		// short pkgYkneoOath/OathObj.counter
+					aload_0;
+					sconst_0;
+					putfield_b 1;		// boolean pkgYkneoOath/OathObj.active
+					aload_0;
+					bspush 64;
+					newarray 11;
+					putfield_a 2;		// reference pkgYkneoOath/OathObj.inner
+					aload_0;
+					bspush 64;
+					newarray 11;
+					putfield_a 3;		// reference pkgYkneoOath/OathObj.outer
+					getstatic_a 23;		// reference pkgYkneoOath/OathObj.scratchBuf
+					ifnonnull L2;
+				L1:	bspush 32;
+					sconst_2;
+					invokestatic 38;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putstatic_a 23;		// reference pkgYkneoOath/OathObj.scratchBuf
+				L2:	return;
+		}
+
+		.method public setKey([BSBS)V 1 {
+			.stack 4;
+			.locals 1;
+
+				L0:	sload_3;
+					bspush 15;
+					sand;
+					sconst_1;
+					if_scmpeq L3;
+				L1:	sload_3;
+					bspush 15;
+					sand;
+					sconst_2;
+					if_scmpeq L3;
+				L2:	sspush 27012;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L3:	sload_3;
+					bspush -16;
+					sand;
+					bspush 16;
+					if_scmpeq L6;
+				L4:	sload_3;
+					bspush -16;
+					sand;
+					bspush 32;
+					if_scmpeq L6;
+				L5:	sspush 27012;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L6:	sload 4;
+					bspush 64;
+					if_scmple L8;
+				L7:	sspush 27264;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L8:	sload_3;
+					bspush 15;
+					sand;
+					sconst_1;
+					if_scmpne L12;
+				L9:	getstatic_a 40;		// reference pkgYkneoOath/OathObj.sha
+					ifnonnull L11;
+				L10:	sconst_1;
+					sconst_0;
+					invokestatic 43;		// javacard/security/MessageDigest.getInstance(BZ)Ljavacard/security/MessageDigest;
+					putstatic_a 40;		// reference pkgYkneoOath/OathObj.sha
+				L11:	aload_0;
+					getstatic_a 40;		// reference pkgYkneoOath/OathObj.sha
+					putfield_a 4;		// reference pkgYkneoOath/OathObj.digest
+					goto L16;
+				L12:	sload_3;
+					bspush 15;
+					sand;
+					sconst_2;
+					if_scmpne L16;
+				L13:	getstatic_a 46;		// reference pkgYkneoOath/OathObj.sha256
+					ifnonnull L15;
+				L14:	sconst_4;
+					sconst_0;
+					invokestatic 43;		// javacard/security/MessageDigest.getInstance(BZ)Ljavacard/security/MessageDigest;
+					putstatic_a 46;		// reference pkgYkneoOath/OathObj.sha256
+				L15:	aload_0;
+					getstatic_a 46;		// reference pkgYkneoOath/OathObj.sha256
+					putfield_a 4;		// reference pkgYkneoOath/OathObj.digest
+				L16:	aload_0;
+					sload_3;
+					putfield_b 5;		// byte pkgYkneoOath/OathObj.type
+					aload_0;
+					sconst_0;
+					putfield_s 0;		// short pkgYkneoOath/OathObj.counter
+					getfield_a_this 2;		// reference pkgYkneoOath/OathObj.inner
+					sconst_0;
+					bspush 64;
+					bspush 54;
+					invokestatic 29;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					getfield_a_this 3;		// reference pkgYkneoOath/OathObj.outer
+					sconst_0;
+					bspush 64;
+					bspush 92;
+					invokestatic 29;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					sconst_0;
+					sstore 5;
+				L17:	sload 5;
+					sload 4;
+					if_scmpge L19;
+				L18:	getfield_a_this 2;		// reference pkgYkneoOath/OathObj.inner
+					sload 5;
+					aload_1;
+					sload_2;
+					baload;
+					bspush 54;
+					sxor;
+					bastore;
+					getfield_a_this 3;		// reference pkgYkneoOath/OathObj.outer
+					sload 5;
+					aload_1;
+					sload_2;
+					baload;
+					bspush 92;
+					sxor;
+					bastore;
+					sinc 5 1;
+					sinc 2 1;
+					goto L17;
+				L19:	return;
+		}
+
+		.method public setDigits(B)V 2 {
+			.stack 2;
+			.locals 0;
+
+				L0:	aload_0;
+					sload_1;
+					putfield_b 6;		// byte pkgYkneoOath/OathObj.digits
+					return;
+		}
+
+		.method public getDigits()B 3 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getfield_b_this 6;		// byte pkgYkneoOath/OathObj.digits
+					sreturn;
+		}
+
+		.method public getType()B 4 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getfield_b_this 5;		// byte pkgYkneoOath/OathObj.type
+					sreturn;
+		}
+
+		.method public setName([BSS)V 5 {
+			.stack 5;
+			.locals 0;
+
+				L0:	getfield_a_this 7;		// reference pkgYkneoOath/OathObj.name
+					ifnonnull L2;
+				L1:	aload_0;
+					bspush 64;
+					newarray 11;
+					putfield_a 7;		// reference pkgYkneoOath/OathObj.name
+				L2:	aload_0;
+					sload_3;
+					putfield_s 8;		// short pkgYkneoOath/OathObj.nameLen
+					aload_1;
+					sload_2;
+					getfield_a_this 7;		// reference pkgYkneoOath/OathObj.name
+					sconst_0;
+					sload_3;
+					invokestatic 42;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					return;
+		}
+
+		.method public getName([BS)S 6 {
+			.stack 5;
+			.locals 0;
+
+				L0:	getfield_a_this 7;		// reference pkgYkneoOath/OathObj.name
+					sconst_0;
+					aload_1;
+					sload_2;
+					getfield_s_this 8;		// short pkgYkneoOath/OathObj.nameLen
+					invokestatic 42;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					getfield_s_this 8;		// short pkgYkneoOath/OathObj.nameLen
+					sreturn;
+		}
+
+		.method public getNameLength()S 7 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getfield_s_this 8;		// short pkgYkneoOath/OathObj.nameLen
+					sreturn;
+		}
+
+		.method public setProp(B)V 8 {
+			.stack 4;
+			.locals 0;
+
+				L0:	aload_0;
+					sload_1;
+					putfield_b 9;		// byte pkgYkneoOath/OathObj.props
+					sload_1;
+					sconst_1;
+					sand;
+					sconst_1;
+					if_scmpne L4;
+				L1:	getfield_a_this 10;		// reference pkgYkneoOath/OathObj.lastChal
+					ifnonnull L3;
+				L2:	aload_0;
+					bspush 64;
+					newarray 11;
+					putfield_a 10;		// reference pkgYkneoOath/OathObj.lastChal
+					goto L4;
+				L3:	getfield_a_this 10;		// reference pkgYkneoOath/OathObj.lastChal
+					sconst_0;
+					bspush 64;
+					sconst_0;
+					invokestatic 29;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					aload_0;
+					sconst_0;
+					putfield_s 11;		// short pkgYkneoOath/OathObj.lastOffs
+				L4:	return;
+		}
+
+		.method public addObject()V 9 {
+			.stack 3;
+			.locals 0;
+
+				L0:	getstatic_a 21;		// reference pkgYkneoOath/OathObj.firstObject
+					ifnonnull L2;
+				L1:	aload_0;
+					dup;
+					putstatic_a 22;		// reference pkgYkneoOath/OathObj.lastObject
+					putstatic_a 21;		// reference pkgYkneoOath/OathObj.firstObject
+					goto L5;
+				L2:	getstatic_a 21;		// reference pkgYkneoOath/OathObj.firstObject
+					getstatic_a 22;		// reference pkgYkneoOath/OathObj.lastObject
+					if_acmpne L4;
+				L3:	getstatic_a 21;		// reference pkgYkneoOath/OathObj.firstObject
+					aload_0;
+					dup;
+					putstatic_a 22;		// reference pkgYkneoOath/OathObj.lastObject
+					putfield_a 12;		// reference pkgYkneoOath/OathObj.nextObject
+					goto L5;
+				L4:	getstatic_a 22;		// reference pkgYkneoOath/OathObj.lastObject
+					aload_0;
+					dup;
+					putstatic_a 22;		// reference pkgYkneoOath/OathObj.lastObject
+					putfield_a 12;		// reference pkgYkneoOath/OathObj.nextObject
+				L5:	return;
+		}
+
+		.method public static getFreeObject()LpkgYkneoOath/OathObj; 1 {
+			.stack 2;
+			.locals 1;
+
+				L0:	getstatic_a 21;		// reference pkgYkneoOath/OathObj.firstObject
+					astore_0;
+				L1:	aload_0;
+					ifnull L5;
+				L2:	aload_0;
+					invokevirtual 24;		// isActive()Z
+					ifne L4;
+				L3:	goto L5;
+				L4:	aload_0;
+					getfield_a 12;		// reference pkgYkneoOath/OathObj.nextObject
+					astore_0;
+					goto L1;
+				L5:	aload_0;
+					ifnonnull L7;
+				L6:	new 25;		// pkgYkneoOath/OathObj
+					dup;
+					invokespecial 26;		// pkgYkneoOath/OathObj.<init>()V
+					astore_0;
+					aload_0;
+					invokevirtual 27;		// addObject()V
+				L7:	aload_0;
+					areturn;
+		}
+
+		.method public static findObject([BSS)LpkgYkneoOath/OathObj; 2 {
+			.stack 5;
+			.locals 1;
+
+				L0:	getstatic_a 21;		// reference pkgYkneoOath/OathObj.firstObject
+					astore_3;
+				L1:	aload_3;
+					ifnull L8;
+				L2:	aload_3;
+					invokevirtual 24;		// isActive()Z
+					ifeq L7;
+				L3:	sload_2;
+					aload_3;
+					getfield_s 8;		// short pkgYkneoOath/OathObj.nameLen
+					if_scmpeq L5;
+				L4:	goto L7;
+				L5:	aload_0;
+					sload_1;
+					aload_3;
+					getfield_a 7;		// reference pkgYkneoOath/OathObj.name
+					sconst_0;
+					sload_2;
+					invokestatic 28;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					ifne L7;
+				L6:	goto L8;
+				L7:	aload_3;
+					getfield_a 12;		// reference pkgYkneoOath/OathObj.nextObject
+					astore_3;
+					goto L1;
+				L8:	aload_3;
+					areturn;
+		}
+
+		.method public calculate([BSS[BS)S 10 {
+			.stack 6;
+			.locals 6;
+
+				L0:	aconst_null;
+					astore 6;
+				L1:	getfield_b_this 5;		// byte pkgYkneoOath/OathObj.type
+					bspush -16;
+					sand;
+					bspush 32;
+					if_scmpne_w L23;
+				L2:	sload_3;
+					bspush 64;
+					if_scmpgt L4;
+				L3:	sload_3;
+					ifne L5;
+				L4:	sspush 27264;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L5:	getfield_b_this 9;		// byte pkgYkneoOath/OathObj.props
+					sconst_1;
+					sand;
+					sconst_1;
+					if_scmpne L22;
+				L6:	bspush 64;
+					sload_3;
+					ssub;
+					sstore 7;
+				L7:	getfield_s_this 11;		// short pkgYkneoOath/OathObj.lastOffs
+					sload 7;
+					if_scmpge L9;
+				L8:	getfield_s_this 11;		// short pkgYkneoOath/OathObj.lastOffs
+					goto L10;
+				L9:	sload 7;
+				L10:	sstore 8;
+				L11:	sload 8;
+					bspush 64;
+					if_scmpge L17;
+				L12:	sload 8;
+					sload 7;
+					if_scmpge L17;
+				L13:	getfield_a_this 10;		// reference pkgYkneoOath/OathObj.lastChal
+					sload 8;
+					baload;
+					ifne L15;
+				L14:	goto L16;
+				L15:	sspush 27010;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L16:	sinc 8 1;
+					goto L11;
+				L17:	sload 8;
+					sload 7;
+					ssub;
+					sload_2;
+					sadd;
+					sstore 9;
+				L18:	aload_1;
+					sload 9;
+					getfield_a_this 10;		// reference pkgYkneoOath/OathObj.lastChal
+					sload 8;
+					sload_3;
+					invokestatic 28;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					sstore 10;
+				L19:	sload 10;
+					sconst_m1;
+					if_scmpne L21;
+				L20:	sspush 27010;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L21:	aload_0;
+					sload 7;
+					putfield_s 11;		// short pkgYkneoOath/OathObj.lastOffs
+					aload_1;
+					sload_2;
+					getfield_a_this 10;		// reference pkgYkneoOath/OathObj.lastChal
+					sload 7;
+					sload_3;
+					invokestatic 42;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+				L22:	aload_1;
+					astore 6;
+					goto_w L44;
+				L23:	getfield_b_this 5;		// byte pkgYkneoOath/OathObj.type
+					bspush -16;
+					sand;
+					bspush 16;
+					if_scmpne_w L43;
+				L24:	getstatic_a 23;		// reference pkgYkneoOath/OathObj.scratchBuf
+					sconst_0;
+					bspush 8;
+					sconst_0;
+					invokestatic 29;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					getfield_a_this 13;		// reference pkgYkneoOath/OathObj.imf
+					ifnull L29;
+				L25:	getfield_a_this 13;		// reference pkgYkneoOath/OathObj.imf
+					sconst_0;
+					baload;
+					ifne L30;
+				L26:	getfield_a_this 13;		// reference pkgYkneoOath/OathObj.imf
+					sconst_1;
+					baload;
+					ifne L30;
+				L27:	getfield_a_this 13;		// reference pkgYkneoOath/OathObj.imf
+					sconst_2;
+					baload;
+					ifne L30;
+				L28:	getfield_a_this 13;		// reference pkgYkneoOath/OathObj.imf
+					sconst_3;
+					baload;
+					ifne L30;
+				L29:	getstatic_a 23;		// reference pkgYkneoOath/OathObj.scratchBuf
+					bspush 6;
+					getfield_s_this 0;		// short pkgYkneoOath/OathObj.counter
+					invokestatic 30;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					goto L42;
+				L30:	getfield_a_this 13;		// reference pkgYkneoOath/OathObj.imf
+					sconst_0;
+					getstatic_a 23;		// reference pkgYkneoOath/OathObj.scratchBuf
+					sconst_4;
+					sconst_4;
+					invokestatic 31;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					sconst_0;
+					sstore 7;
+				L31:	getfield_s_this 0;		// short pkgYkneoOath/OathObj.counter
+					bspush 8;
+					sushr;
+					sspush 255;
+					sand;
+					sstore 8;
+				L32:	getfield_s_this 0;		// short pkgYkneoOath/OathObj.counter
+					sspush 255;
+					sand;
+					sstore 9;
+				L33:	bspush 7;
+					sstore 10;
+				L34:	sload 10;
+					ifle L42;
+				L35:	getstatic_a 23;		// reference pkgYkneoOath/OathObj.scratchBuf
+					sload 10;
+					baload;
+					sspush 255;
+					sand;
+					sstore 11;
+				L36:	sload 10;
+					bspush 7;
+					if_scmpne L38;
+				L37:	sload 11;
+					sload 9;
+					sadd;
+					sstore 11;
+					goto L40;
+				L38:	sload 10;
+					bspush 6;
+					if_scmpne L40;
+				L39:	sload 11;
+					sload 8;
+					sadd;
+					sstore 11;
+				L40:	sload 11;
+					sload 7;
+					sadd;
+					sstore 11;
+					sload 11;
+					bspush 8;
+					sushr;
+					s2b;
+					sstore 7;
+					getstatic_a 23;		// reference pkgYkneoOath/OathObj.scratchBuf
+					sload 10;
+					sload 11;
+					s2b;
+					bastore;
+				L41:	sload 10;
+					sconst_1;
+					ssub;
+					s2b;
+					sstore 10;
+					goto L34;
+				L42:	aload_0;
+					dup;
+					getfield_s 0;		// short pkgYkneoOath/OathObj.counter
+					sconst_1;
+					sadd;
+					putfield_s 0;		// short pkgYkneoOath/OathObj.counter
+					getstatic_a 23;		// reference pkgYkneoOath/OathObj.scratchBuf
+					astore 6;
+					sconst_0;
+					sstore_2;
+					bspush 8;
+					sstore_3;
+					goto L44;
+				L43:	sspush 27012;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L44:	getfield_a_this 4;		// reference pkgYkneoOath/OathObj.digest
+					invokevirtual 32;		// reset()V
+					getfield_a_this 4;		// reference pkgYkneoOath/OathObj.digest
+					getfield_a_this 2;		// reference pkgYkneoOath/OathObj.inner
+					sconst_0;
+					bspush 64;
+					invokevirtual 33;		// update([BSS)V
+					getfield_a_this 4;		// reference pkgYkneoOath/OathObj.digest
+					aload 6;
+					sload_2;
+					sload_3;
+					aload 4;
+					sload 5;
+					invokevirtual 34;		// doFinal([BSS[BS)S
+					sstore 7;
+				L45:	getfield_a_this 4;		// reference pkgYkneoOath/OathObj.digest
+					invokevirtual 32;		// reset()V
+					getfield_a_this 4;		// reference pkgYkneoOath/OathObj.digest
+					getfield_a_this 3;		// reference pkgYkneoOath/OathObj.outer
+					sconst_0;
+					bspush 64;
+					invokevirtual 33;		// update([BSS)V
+					getfield_a_this 4;		// reference pkgYkneoOath/OathObj.digest
+					aload 4;
+					sload 5;
+					sload 7;
+					aload 4;
+					sload 5;
+					invokevirtual 34;		// doFinal([BSS[BS)S
+					sreturn;
+		}
+
+		.method public calculateTruncated([BSS[BS)S 11 {
+			.stack 6;
+			.locals 2;
+
+				L0:	aload_0;
+					aload_1;
+					sload_2;
+					sload_3;
+					getstatic_a 23;		// reference pkgYkneoOath/OathObj.scratchBuf
+					sconst_0;
+					invokevirtual 35;		// calculate([BSS[BS)S
+					sstore 6;
+				L1:	getstatic_a 23;		// reference pkgYkneoOath/OathObj.scratchBuf
+					sload 6;
+					sconst_1;
+					ssub;
+					baload;
+					bspush 15;
+					sand;
+					sstore 7;
+				L2:	aload 4;
+					sload 5;
+					sinc 5 1;
+					getstatic_a 23;		// reference pkgYkneoOath/OathObj.scratchBuf
+					sload 7;
+					sinc 7 1;
+					baload;
+					bspush 127;
+					sand;
+					bastore;
+					aload 4;
+					sload 5;
+					sinc 5 1;
+					getstatic_a 23;		// reference pkgYkneoOath/OathObj.scratchBuf
+					sload 7;
+					sinc 7 1;
+					baload;
+					bastore;
+					aload 4;
+					sload 5;
+					sinc 5 1;
+					getstatic_a 23;		// reference pkgYkneoOath/OathObj.scratchBuf
+					sload 7;
+					sinc 7 1;
+					baload;
+					bastore;
+					aload 4;
+					sload 5;
+					sinc 5 1;
+					getstatic_a 23;		// reference pkgYkneoOath/OathObj.scratchBuf
+					sload 7;
+					sinc 7 1;
+					baload;
+					bastore;
+					sconst_4;
+					sreturn;
+		}
+
+		.method public getDigestLength()S 12 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getfield_a_this 4;		// reference pkgYkneoOath/OathObj.digest
+					invokevirtual 36;		// getLength()B
+					sreturn;
+		}
+
+		.method public isActive()Z 13 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getfield_b_this 1;		// boolean pkgYkneoOath/OathObj.active
+					sreturn;
+		}
+
+		.method public setActive(Z)V 14 {
+			.stack 2;
+			.locals 0;
+
+				L0:	aload_0;
+					sload_1;
+					putfield_b 1;		// boolean pkgYkneoOath/OathObj.active
+					return;
+		}
+
+		.method public setImf([BS)V 15 {
+			.stack 6;
+			.locals 1;
+
+				L0:	getfield_a_this 13;		// reference pkgYkneoOath/OathObj.imf
+					ifnonnull L2;
+				L1:	aload_0;
+					sconst_4;
+					newarray 11;
+					putfield_a 13;		// reference pkgYkneoOath/OathObj.imf
+				L2:	sconst_0;
+					sstore_3;
+				L3:	sload_3;
+					sconst_4;
+					if_scmpge L5;
+				L4:	getfield_a_this 13;		// reference pkgYkneoOath/OathObj.imf
+					sload_3;
+					aload_1;
+					sload_2;
+					sinc 2 1;
+					baload;
+					bastore;
+					sload_3;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore_3;
+					goto L3;
+				L5:	return;
+		}
+
+		.method public clearImf()V 16 {
+			.stack 4;
+			.locals 0;
+
+				L0:	getfield_a_this 13;		// reference pkgYkneoOath/OathObj.imf
+					ifnull L2;
+				L1:	getfield_a_this 13;		// reference pkgYkneoOath/OathObj.imf
+					sconst_0;
+					sconst_4;
+					sconst_0;
+					invokestatic 29;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+				L2:	return;
+		}
+
+	}
+
+	.class public YkneoOath 1 extends 2.3 {		// extends javacard/framework/Applet
+
+		.fields {
+			private byte[] tempBuf 0;		// [B
+			private byte[] sendBuffer 1;		// [B
+			private OathObj authObj 2;		// LpkgYkneoOath/OathObj;
+			private OathObj scratchAuth 3;		// LpkgYkneoOath/OathObj;
+			private byte[] propBuf 4;		// [B
+			private 1.14 rng 5;		// Ljavacard/security/RandomData;
+			private byte[] identity 6;		// [B
+			public static final byte NAME_TAG = 113;		// B
+			public static final byte NAME_LIST_TAG = 114;		// B
+			public static final byte KEY_TAG = 115;		// B
+			public static final byte CHALLENGE_TAG = 116;		// B
+			public static final byte RESPONSE_TAG = 117;		// B
+			public static final byte T_RESPONSE_TAG = 118;		// B
+			public static final byte NO_RESPONSE_TAG = 119;		// B
+			public static final byte PROPERTY_TAG = 120;		// B
+			public static final byte VERSION_TAG = 121;		// B
+			public static final byte IMF_TAG = 122;		// B
+			public static final byte ALGORITHM_TAG = 123;		// B
+			public static final byte PUT_INS = 1;		// B
+			public static final byte DELETE_INS = 2;		// B
+			public static final byte SET_CODE_INS = 3;		// B
+			public static final byte RESET_INS = 4;		// B
+			public static final byte LIST_INS = -95;		// B
+			public static final byte CALCULATE_INS = -94;		// B
+			public static final byte VALIDATE_INS = -93;		// B
+			public static final byte CALCULATE_ALL_INS = -92;		// B
+			public static final byte SEND_REMAINING_INS = -91;		// B
+			private static final short _0 = 0;		// S
+			private static final byte CHALLENGE_LENGTH = 8;		// B
+			private static final byte PROP_AUTH_OFFS = 0;		// B
+			private static final byte PROP_SENT_DATA_OFFS = 1;		// B
+			private static final byte PROP_REMAINING_DATA_LEN = 3;		// B
+			private static final byte PROP_BUF_SIZE = 5;		// B
+			private static final short BUFSIZE = 2048;		// S
+			private static final short TMP_BUFSIZE = 32;		// S
+			private static final byte[] version = {1,0,2};		// [B
+		}
+
+		.publicMethodTable 7 {
+			equals(Ljava/lang/Object;)Z;
+			register()V;
+			register([BSB)V;
+			selectingApplet()Z;
+			deselect()V;
+			getShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable;;
+			select()Z;
+			process(Ljavacard/framework/APDU;)V;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 4;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 37;		// javacard/framework/Applet.<init>()V
+					aload_0;
+					bspush 32;
+					sconst_2;
+					invokestatic 38;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 14;		// reference pkgYkneoOath/YkneoOath.tempBuf
+					aload_0;
+					sspush 2048;
+					sconst_2;
+					invokestatic 38;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 15;		// reference pkgYkneoOath/YkneoOath.sendBuffer
+					aload_0;
+					sconst_5;
+					sconst_2;
+					invokestatic 38;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 16;		// reference pkgYkneoOath/YkneoOath.propBuf
+					aload_0;
+					sconst_1;
+					invokestatic 41;		// javacard/security/RandomData.getInstance(B)Ljavacard/security/RandomData;
+					putfield_a 17;		// reference pkgYkneoOath/YkneoOath.rng
+					aload_0;
+					bspush 8;
+					newarray 11;
+					putfield_a 18;		// reference pkgYkneoOath/YkneoOath.identity
+					getfield_a_this 17;		// reference pkgYkneoOath/YkneoOath.rng
+					getfield_a_this 18;		// reference pkgYkneoOath/YkneoOath.identity
+					sconst_0;
+					bspush 8;
+					invokevirtual 44;		// generateData([BSS)V
+					aload_0;
+					new 25;		// pkgYkneoOath/OathObj
+					dup;
+					invokespecial 26;		// pkgYkneoOath/OathObj.<init>()V
+					putfield_a 19;		// reference pkgYkneoOath/YkneoOath.authObj
+					aload_0;
+					new 25;		// pkgYkneoOath/OathObj
+					dup;
+					invokespecial 26;		// pkgYkneoOath/OathObj.<init>()V
+					putfield_a 20;		// reference pkgYkneoOath/YkneoOath.scratchAuth
+					return;
+		}
+
+		.method public static install([BSB)V 1 {
+			.stack 5;
+			.locals 0;
+
+				L0:	new 47;		// pkgYkneoOath/YkneoOath
+					dup;
+					invokespecial 48;		// pkgYkneoOath/YkneoOath.<init>()V
+					aload_0;
+					sload_1;
+					sconst_1;
+					sadd;
+					aload_0;
+					sload_1;
+					baload;
+					invokevirtual 49;		// register([BSB)V
+					return;
+		}
+
+		.method public process(Ljavacard/framework/APDU;)V 7 {
+			.stack 6;
+			.locals 6;
+
+			.descriptor	Ljavacard/framework/APDU;	2.10;
+
+				L0:	aload_0;
+					invokevirtual 50;		// selectingApplet()Z
+					ifeq_w L7;
+				L1:	aload_1;
+					invokevirtual 51;		// getBuffer()[B
+					astore_2;
+				L2:	sconst_0;
+					sstore_3;
+				L3:	aload_2;
+					sload_3;
+					sinc 3 1;
+					bspush 121;
+					bastore;
+					aload_2;
+					sload_3;
+					sinc 3 1;
+					getstatic_a 52;		// reference pkgYkneoOath/YkneoOath.version
+					arraylength;
+					s2b;
+					bastore;
+					getstatic_a 52;		// reference pkgYkneoOath/YkneoOath.version
+					sconst_0;
+					aload_2;
+					sload_3;
+					getstatic_a 52;		// reference pkgYkneoOath/YkneoOath.version
+					arraylength;
+					invokestatic 31;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					sload_3;
+					getstatic_a 52;		// reference pkgYkneoOath/YkneoOath.version
+					arraylength;
+					s2b;
+					sadd;
+					sstore_3;
+					aload_2;
+					sload_3;
+					sinc 3 1;
+					bspush 113;
+					bastore;
+					getfield_a_this 18;		// reference pkgYkneoOath/YkneoOath.identity
+					arraylength;
+					sstore 4;
+				L4:	aload_2;
+					sload_3;
+					sinc 3 1;
+					sload 4;
+					s2b;
+					bastore;
+					getfield_a_this 18;		// reference pkgYkneoOath/YkneoOath.identity
+					sconst_0;
+					aload_2;
+					sload_3;
+					sload 4;
+					invokestatic 31;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					sload_3;
+					sload 4;
+					sadd;
+					sstore_3;
+					getfield_a_this 19;		// reference pkgYkneoOath/YkneoOath.authObj
+					invokevirtual 24;		// isActive()Z
+					ifeq L6;
+				L5:	aload_2;
+					sload_3;
+					sinc 3 1;
+					bspush 116;
+					bastore;
+					aload_2;
+					sload_3;
+					sinc 3 1;
+					bspush 8;
+					bastore;
+					getfield_a_this 17;		// reference pkgYkneoOath/YkneoOath.rng
+					aload_2;
+					sload_3;
+					bspush 8;
+					invokevirtual 44;		// generateData([BSS)V
+					getfield_a_this 19;		// reference pkgYkneoOath/YkneoOath.authObj
+					aload_2;
+					sload_3;
+					bspush 8;
+					getfield_a_this 14;		// reference pkgYkneoOath/YkneoOath.tempBuf
+					sconst_0;
+					invokevirtual 35;		// calculate([BSS[BS)S
+					pop;
+					sinc 3 8;
+					aload_2;
+					sload_3;
+					sinc 3 1;
+					bspush 123;
+					bastore;
+					aload_2;
+					sload_3;
+					sinc 3 1;
+					sconst_1;
+					bastore;
+					aload_2;
+					sload_3;
+					sinc 3 1;
+					getfield_a_this 19;		// reference pkgYkneoOath/YkneoOath.authObj
+					invokevirtual 53;		// getType()B
+					bastore;
+				L6:	aload_1;
+					sconst_0;
+					sload_3;
+					invokevirtual 54;		// setOutgoingAndSend(SS)V
+					return;
+				L7:	aload_1;
+					invokevirtual 51;		// getBuffer()[B
+					astore_2;
+				L8:	aload_1;
+					invokevirtual 55;		// setIncomingAndReceive()S
+					pop;
+					sconst_0;
+					sstore_3;
+				L9:	aload_2;
+					sconst_2;
+					baload;
+					sstore 4;
+				L10:	aload_2;
+					sconst_3;
+					baload;
+					sstore 5;
+				L11:	sload 4;
+					sload 5;
+					invokestatic 56;		// javacard/framework/Util.makeShort(BB)S
+					sstore 6;
+				L12:	aload_2;
+					sconst_1;
+					baload;
+					sstore 7;
+				L13:	getfield_a_this 19;		// reference pkgYkneoOath/YkneoOath.authObj
+					invokevirtual 24;		// isActive()Z
+					ifeq L18;
+				L14:	sload 7;
+					bspush -93;
+					if_scmpeq L18;
+				L15:	sload 7;
+					sconst_4;
+					if_scmpeq L18;
+				L16:	getfield_a_this 16;		// reference pkgYkneoOath/YkneoOath.propBuf
+					sconst_0;
+					baload;
+					sconst_1;
+					if_scmpeq L18;
+				L17:	sspush 27010;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L18:	sload 7;
+					slookupswitch L48 9 -95 L31 -94 L34 -93 L39 -92 L42 -91 L47 1 L19 2 L22 3 L25 4 L28;
+				L19:	sload 6;
+					ifne L21;
+				L20:	invokestatic 57;		// javacard/framework/JCSystem.beginTransaction()V
+					aload_0;
+					aload_2;
+					invokespecial 58;		// pkgYkneoOath/YkneoOath.handlePut([B)V
+					invokestatic 59;		// javacard/framework/JCSystem.commitTransaction()V
+					goto_w L49;
+				L21:	sspush 27392;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+					goto_w L49;
+				L22:	sload 6;
+					ifne L24;
+				L23:	invokestatic 57;		// javacard/framework/JCSystem.beginTransaction()V
+					aload_0;
+					aload_2;
+					invokespecial 60;		// pkgYkneoOath/YkneoOath.handleDelete([B)V
+					invokestatic 59;		// javacard/framework/JCSystem.commitTransaction()V
+					goto_w L49;
+				L24:	sspush 27392;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+					goto_w L49;
+				L25:	sload 6;
+					ifne L27;
+				L26:	aload_0;
+					aload_2;
+					invokespecial 61;		// pkgYkneoOath/YkneoOath.handleChangeCode([B)V
+					goto_w L49;
+				L27:	sspush 27392;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+					goto_w L49;
+				L28:	sload 6;
+					sspush -8531;
+					if_scmpne L30;
+				L29:	invokestatic 57;		// javacard/framework/JCSystem.beginTransaction()V
+					aload_0;
+					invokespecial 62;		// pkgYkneoOath/YkneoOath.handleReset()V
+					invokestatic 59;		// javacard/framework/JCSystem.commitTransaction()V
+					goto_w L49;
+				L30:	sspush 27392;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+					goto_w L49;
+				L31:	sload 6;
+					ifne L33;
+				L32:	aload_0;
+					getfield_a_this 15;		// reference pkgYkneoOath/YkneoOath.sendBuffer
+					invokespecial 63;		// pkgYkneoOath/YkneoOath.handleList([B)S
+					sstore_3;
+					goto L49;
+				L33:	sspush 27392;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+					goto L49;
+				L34:	sload 4;
+					ifne L38;
+				L35:	sload 5;
+					ifeq L37;
+				L36:	sload 5;
+					sconst_1;
+					if_scmpne L38;
+				L37:	aload_0;
+					aload_2;
+					sload 5;
+					getfield_a_this 15;		// reference pkgYkneoOath/YkneoOath.sendBuffer
+					invokespecial 64;		// pkgYkneoOath/YkneoOath.handleCalc([BB[B)S
+					sstore_3;
+					goto L49;
+				L38:	sspush 27392;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+					goto L49;
+				L39:	sload 6;
+					ifne L41;
+				L40:	aload_0;
+					aload_2;
+					getfield_a_this 15;		// reference pkgYkneoOath/YkneoOath.sendBuffer
+					invokespecial 65;		// pkgYkneoOath/YkneoOath.handleValidate([B[B)S
+					sstore_3;
+					goto L49;
+				L41:	sspush 27392;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+					goto L49;
+				L42:	sload 4;
+					ifne L46;
+				L43:	sload 5;
+					ifeq L45;
+				L44:	sload 5;
+					sconst_1;
+					if_scmpne L46;
+				L45:	aload_0;
+					aload_2;
+					sload 5;
+					getfield_a_this 15;		// reference pkgYkneoOath/YkneoOath.sendBuffer
+					invokespecial 66;		// pkgYkneoOath/YkneoOath.handleCalcAll([BB[B)S
+					sstore_3;
+					goto L49;
+				L46:	sspush 27392;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+					goto L49;
+				L47:	getfield_a_this 16;		// reference pkgYkneoOath/YkneoOath.propBuf
+					sconst_3;
+					invokestatic 67;		// javacard/framework/Util.getShort([BS)S
+					sstore_3;
+					goto L49;
+				L48:	sspush 27904;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L49:	sload_3;
+					ifle L51;
+				L50:	aload_0;
+					aload_1;
+					sload_3;
+					invokespecial 68;		// pkgYkneoOath/YkneoOath.sendData(Ljavacard/framework/APDU;S)V
+				L51:	return;
+		}
+
+		.method private handleReset()V {
+			.stack 4;
+			.locals 0;
+
+				L0:	aconst_null;
+					putstatic_a 21;		// reference pkgYkneoOath/OathObj.firstObject
+					aconst_null;
+					putstatic_a 22;		// reference pkgYkneoOath/OathObj.lastObject
+					getfield_a_this 16;		// reference pkgYkneoOath/YkneoOath.propBuf
+					sconst_0;
+					sconst_5;
+					sconst_0;
+					invokestatic 29;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					getfield_a_this 17;		// reference pkgYkneoOath/YkneoOath.rng
+					getfield_a_this 18;		// reference pkgYkneoOath/YkneoOath.identity
+					sconst_0;
+					bspush 8;
+					invokevirtual 44;		// generateData([BSS)V
+					getfield_a_this 19;		// reference pkgYkneoOath/YkneoOath.authObj
+					sconst_0;
+					invokevirtual 69;		// setActive(Z)V
+					invokestatic 70;		// javacard/framework/JCSystem.requestObjectDeletion()V
+					return;
+		}
+
+		.method private handleValidate([B[B)S {
+			.stack 6;
+			.locals 3;
+
+				L0:	getfield_a_this 19;		// reference pkgYkneoOath/YkneoOath.authObj
+					invokevirtual 24;		// isActive()Z
+					ifne L2;
+				L1:	sspush 27012;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L2:	sconst_5;
+					sstore_3;
+				L3:	aload_1;
+					sload_3;
+					sinc 3 1;
+					baload;
+					bspush 117;
+					if_scmpeq L5;
+				L4:	sspush 27264;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L5:	aload_0;
+					aload_1;
+					sload_3;
+					invokespecial 71;		// pkgYkneoOath/YkneoOath.getLength([BS)S
+					sstore 4;
+				L6:	sload 4;
+					getfield_a_this 19;		// reference pkgYkneoOath/YkneoOath.authObj
+					invokevirtual 72;		// getDigestLength()S
+					if_scmpeq L8;
+				L7:	sspush 27264;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L8:	sload_3;
+					aload_0;
+					sload 4;
+					invokespecial 73;		// pkgYkneoOath/YkneoOath.getLengthBytes(S)S
+					sadd;
+					sstore_3;
+					aload_1;
+					sload_3;
+					getfield_a_this 14;		// reference pkgYkneoOath/YkneoOath.tempBuf
+					sconst_0;
+					sload 4;
+					invokestatic 28;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					ifne L10;
+				L9:	getfield_a_this 16;		// reference pkgYkneoOath/YkneoOath.propBuf
+					sconst_0;
+					sconst_1;
+					bastore;
+					goto L11;
+				L10:	sspush 27264;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L11:	sload_3;
+					sload 4;
+					sadd;
+					sstore_3;
+					aload_1;
+					sload_3;
+					sinc 3 1;
+					baload;
+					bspush 116;
+					if_scmpeq L13;
+				L12:	sspush 27264;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L13:	aload_0;
+					aload_1;
+					sload_3;
+					invokespecial 71;		// pkgYkneoOath/YkneoOath.getLength([BS)S
+					sstore 4;
+					sload 4;
+					bspush 8;
+					if_scmpge L15;
+				L14:	sspush 27264;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L15:	sload_3;
+					aload_0;
+					sload 4;
+					invokespecial 73;		// pkgYkneoOath/YkneoOath.getLengthBytes(S)S
+					sadd;
+					sstore_3;
+					getfield_a_this 19;		// reference pkgYkneoOath/YkneoOath.authObj
+					aload_1;
+					sload_3;
+					sload 4;
+					getfield_a_this 14;		// reference pkgYkneoOath/YkneoOath.tempBuf
+					sconst_0;
+					invokevirtual 35;		// calculate([BSS[BS)S
+					sstore 5;
+				L16:	aload_2;
+					sconst_0;
+					bspush 117;
+					bastore;
+					aload_2;
+					sconst_1;
+					sload 5;
+					s2b;
+					bastore;
+					getfield_a_this 14;		// reference pkgYkneoOath/YkneoOath.tempBuf
+					sconst_0;
+					aload_2;
+					sconst_2;
+					sload 5;
+					invokestatic 31;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					sload 5;
+					sconst_2;
+					sadd;
+					sreturn;
+		}
+
+		.method private handleChangeCode([B)V {
+			.stack 6;
+			.locals 5;
+
+				L0:	sconst_5;
+					sstore_2;
+				L1:	aload_1;
+					sload_2;
+					sinc 2 1;
+					baload;
+					bspush 115;
+					if_scmpeq L3;
+				L2:	sspush 27264;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L3:	aload_0;
+					aload_1;
+					sload_2;
+					invokespecial 71;		// pkgYkneoOath/YkneoOath.getLength([BS)S
+					sstore_3;
+				L4:	sload_2;
+					aload_0;
+					sload_3;
+					invokespecial 73;		// pkgYkneoOath/YkneoOath.getLengthBytes(S)S
+					sadd;
+					sstore_2;
+					sload_3;
+					ifne L6;
+				L5:	getfield_a_this 19;		// reference pkgYkneoOath/YkneoOath.authObj
+					sconst_0;
+					invokevirtual 69;		// setActive(Z)V
+					goto_w L19;
+				L6:	aload_1;
+					sload_2;
+					sinc 2 1;
+					baload;
+					sstore 4;
+				L7:	getfield_a_this 20;		// reference pkgYkneoOath/YkneoOath.scratchAuth
+					aload_1;
+					sload_2;
+					sload 4;
+					sload_3;
+					sconst_1;
+					ssub;
+					invokevirtual 74;		// setKey([BSBS)V
+					sload_2;
+					sload_3;
+					sconst_1;
+					ssub;
+					sadd;
+					sstore_2;
+					aload_1;
+					sload_2;
+					sinc 2 1;
+					baload;
+					bspush 116;
+					if_scmpeq L9;
+				L8:	sspush 27264;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L9:	aload_0;
+					aload_1;
+					sload_2;
+					invokespecial 71;		// pkgYkneoOath/YkneoOath.getLength([BS)S
+					sstore_3;
+					sload_2;
+					aload_0;
+					sload_3;
+					invokespecial 73;		// pkgYkneoOath/YkneoOath.getLengthBytes(S)S
+					sadd;
+					sstore_2;
+					getfield_a_this 20;		// reference pkgYkneoOath/YkneoOath.scratchAuth
+					aload_1;
+					sload_2;
+					sload_3;
+					getfield_a_this 14;		// reference pkgYkneoOath/YkneoOath.tempBuf
+					sconst_0;
+					invokevirtual 35;		// calculate([BSS[BS)S
+					sstore 5;
+				L10:	sload_2;
+					sload_3;
+					sadd;
+					sstore_2;
+					aload_1;
+					sload_2;
+					sinc 2 1;
+					baload;
+					bspush 117;
+					if_scmpeq L12;
+				L11:	sspush 27264;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L12:	aload_0;
+					aload_1;
+					sload_2;
+					invokespecial 71;		// pkgYkneoOath/YkneoOath.getLength([BS)S
+					sstore_3;
+					sload_2;
+					aload_0;
+					sload_3;
+					invokespecial 73;		// pkgYkneoOath/YkneoOath.getLengthBytes(S)S
+					sadd;
+					sstore_2;
+					sload_3;
+					sload 5;
+					if_scmpeq L14;
+				L13:	sspush 27264;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L14:	aload_1;
+					sload_2;
+					getfield_a_this 14;		// reference pkgYkneoOath/YkneoOath.tempBuf
+					sconst_0;
+					sload_3;
+					invokestatic 28;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					ifne L18;
+				L15:	getfield_a_this 19;		// reference pkgYkneoOath/YkneoOath.authObj
+					astore 6;
+				L16:	aload_0;
+					getfield_a_this 20;		// reference pkgYkneoOath/YkneoOath.scratchAuth
+					putfield_a 19;		// reference pkgYkneoOath/YkneoOath.authObj
+					aload_0;
+					aload 6;
+					putfield_a 20;		// reference pkgYkneoOath/YkneoOath.scratchAuth
+					aload 6;
+					sconst_0;
+					invokevirtual 69;		// setActive(Z)V
+					getfield_a_this 19;		// reference pkgYkneoOath/YkneoOath.authObj
+					sconst_1;
+					invokevirtual 69;		// setActive(Z)V
+				L17:	goto L19;
+				L18:	sspush 27012;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L19:	return;
+		}
+
+		.method private handleCalc([BB[B)S {
+			.stack 6;
+			.locals 4;
+
+				L0:	sconst_5;
+					sstore 4;
+				L1:	aload_1;
+					sload 4;
+					sinc 4 1;
+					baload;
+					bspush 113;
+					if_scmpeq L3;
+				L2:	sspush 27264;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L3:	aload_0;
+					aload_1;
+					sload 4;
+					invokespecial 71;		// pkgYkneoOath/YkneoOath.getLength([BS)S
+					sstore 5;
+				L4:	sload 4;
+					aload_0;
+					sload 5;
+					invokespecial 73;		// pkgYkneoOath/YkneoOath.getLengthBytes(S)S
+					sadd;
+					sstore 4;
+					aload_1;
+					sload 4;
+					sload 5;
+					invokestatic 75;		// pkgYkneoOath/OathObj.findObject([BSS)LpkgYkneoOath/OathObj;
+					astore 6;
+				L5:	aload 6;
+					ifnonnull L7;
+				L6:	sspush 27012;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L7:	sload 4;
+					sload 5;
+					sadd;
+					sstore 4;
+					aload_1;
+					sload 4;
+					sinc 4 1;
+					baload;
+					bspush 116;
+					if_scmpeq L9;
+				L8:	sspush 27264;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L9:	aload_0;
+					aload_1;
+					sload 4;
+					invokespecial 71;		// pkgYkneoOath/YkneoOath.getLength([BS)S
+					sstore 5;
+					sload 4;
+					aload_0;
+					sload 5;
+					invokespecial 73;		// pkgYkneoOath/YkneoOath.getLengthBytes(S)S
+					sadd;
+					sstore 4;
+					sconst_0;
+					sstore 7;
+				L10:	sload_2;
+					ifne L12;
+				L11:	aload 6;
+					aload_1;
+					sload 4;
+					sload 5;
+					getfield_a_this 14;		// reference pkgYkneoOath/YkneoOath.tempBuf
+					sconst_0;
+					invokevirtual 35;		// calculate([BSS[BS)S
+					sstore 5;
+					aload_3;
+					sload 7;
+					sinc 7 1;
+					bspush 117;
+					bastore;
+					goto L13;
+				L12:	aload 6;
+					aload_1;
+					sload 4;
+					sload 5;
+					getfield_a_this 14;		// reference pkgYkneoOath/YkneoOath.tempBuf
+					sconst_0;
+					invokevirtual 76;		// calculateTruncated([BSS[BS)S
+					sstore 5;
+					aload_3;
+					sload 7;
+					sinc 7 1;
+					bspush 118;
+					bastore;
+				L13:	sload 7;
+					aload_0;
+					aload_3;
+					sload 7;
+					sload 5;
+					sconst_1;
+					sadd;
+					invokespecial 77;		// pkgYkneoOath/YkneoOath.setLength([BSS)S
+					sadd;
+					sstore 7;
+					aload_3;
+					sload 7;
+					sinc 7 1;
+					aload 6;
+					invokevirtual 78;		// getDigits()B
+					bastore;
+					getfield_a_this 14;		// reference pkgYkneoOath/YkneoOath.tempBuf
+					sconst_0;
+					aload_3;
+					sload 7;
+					sload 5;
+					invokestatic 31;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					sload 5;
+					aload_0;
+					sload 5;
+					invokespecial 73;		// pkgYkneoOath/YkneoOath.getLengthBytes(S)S
+					sadd;
+					sconst_2;
+					sadd;
+					sreturn;
+		}
+
+		.method private handleCalcAll([BB[B)S {
+			.stack 7;
+			.locals 4;
+
+				L0:	sconst_5;
+					sstore 4;
+				L1:	aload_1;
+					sload 4;
+					sinc 4 1;
+					baload;
+					bspush 116;
+					if_scmpeq L3;
+				L2:	sspush 27264;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L3:	aload_0;
+					aload_1;
+					sload 4;
+					sinc 4 1;
+					invokespecial 71;		// pkgYkneoOath/YkneoOath.getLength([BS)S
+					sstore 5;
+				L4:	aload_1;
+					sload 4;
+					getfield_a_this 14;		// reference pkgYkneoOath/YkneoOath.tempBuf
+					sconst_0;
+					sload 5;
+					invokestatic 31;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					sconst_0;
+					sstore 4;
+					getstatic_a 21;		// reference pkgYkneoOath/OathObj.firstObject
+					astore 6;
+				L5:	aload 6;
+					ifnull_w L16;
+				L6:	aload 6;
+					invokevirtual 24;		// isActive()Z
+					ifne L8;
+				L7:	goto_w L15;
+				L8:	aload_3;
+					sload 4;
+					sinc 4 1;
+					bspush 113;
+					bastore;
+					aload_3;
+					sload 4;
+					sinc 4 1;
+					aload 6;
+					invokevirtual 79;		// getNameLength()S
+					s2b;
+					bastore;
+					sload 4;
+					aload 6;
+					aload_3;
+					sload 4;
+					invokevirtual 80;		// getName([BS)S
+					sadd;
+					sstore 4;
+					sconst_0;
+					sstore 7;
+				L9:	aload 6;
+					invokevirtual 53;		// getType()B
+					bspush -16;
+					sand;
+					bspush 32;
+					if_scmpne L13;
+				L10:	sload_2;
+					ifne L12;
+				L11:	aload_3;
+					sload 4;
+					sinc 4 1;
+					bspush 117;
+					bastore;
+					aload 6;
+					getfield_a_this 14;		// reference pkgYkneoOath/YkneoOath.tempBuf
+					sconst_0;
+					sload 5;
+					aload_3;
+					sload 4;
+					sconst_2;
+					sadd;
+					invokevirtual 35;		// calculate([BSS[BS)S
+					sstore 7;
+					goto L14;
+				L12:	aload_3;
+					sload 4;
+					sinc 4 1;
+					bspush 118;
+					bastore;
+					aload 6;
+					getfield_a_this 14;		// reference pkgYkneoOath/YkneoOath.tempBuf
+					sconst_0;
+					sload 5;
+					aload_3;
+					sload 4;
+					sconst_2;
+					sadd;
+					invokevirtual 76;		// calculateTruncated([BSS[BS)S
+					sstore 7;
+					goto L14;
+				L13:	aload_3;
+					sload 4;
+					sinc 4 1;
+					bspush 119;
+					bastore;
+				L14:	aload_3;
+					sload 4;
+					sinc 4 1;
+					sload 7;
+					sconst_1;
+					sadd;
+					s2b;
+					bastore;
+					aload_3;
+					sload 4;
+					sinc 4 1;
+					aload 6;
+					invokevirtual 78;		// getDigits()B
+					bastore;
+					sload 4;
+					sload 7;
+					sadd;
+					sstore 4;
+				L15:	aload 6;
+					getfield_a 12;		// reference pkgYkneoOath/OathObj.nextObject
+					astore 6;
+					goto_w L5;
+				L16:	sload 4;
+					sreturn;
+		}
+
+		.method private handleList([B)S {
+			.stack 4;
+			.locals 2;
+
+				L0:	sconst_0;
+					sstore_2;
+				L1:	getstatic_a 21;		// reference pkgYkneoOath/OathObj.firstObject
+					astore_3;
+				L2:	aload_3;
+					ifnull L7;
+				L3:	aload_3;
+					invokevirtual 24;		// isActive()Z
+					ifne L5;
+				L4:	goto L6;
+				L5:	aload_1;
+					sload_2;
+					sinc 2 1;
+					bspush 114;
+					bastore;
+					aload_1;
+					sload_2;
+					sinc 2 1;
+					aload_3;
+					invokevirtual 79;		// getNameLength()S
+					sconst_1;
+					sadd;
+					s2b;
+					bastore;
+					aload_1;
+					sload_2;
+					sinc 2 1;
+					aload_3;
+					invokevirtual 53;		// getType()B
+					bastore;
+					sload_2;
+					aload_3;
+					aload_1;
+					sload_2;
+					invokevirtual 80;		// getName([BS)S
+					sadd;
+					sstore_2;
+				L6:	aload_3;
+					getfield_a 12;		// reference pkgYkneoOath/OathObj.nextObject
+					astore_3;
+					goto L2;
+				L7:	sload_2;
+					sreturn;
+		}
+
+		.method private handleDelete([B)V {
+			.stack 4;
+			.locals 3;
+
+				L0:	sconst_5;
+					sstore_2;
+				L1:	aload_1;
+					sload_2;
+					sinc 2 1;
+					baload;
+					bspush 113;
+					if_scmpeq L3;
+				L2:	sspush 27264;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L3:	aload_0;
+					aload_1;
+					sload_2;
+					invokespecial 71;		// pkgYkneoOath/YkneoOath.getLength([BS)S
+					sstore_3;
+				L4:	sload_2;
+					aload_0;
+					sload_3;
+					invokespecial 73;		// pkgYkneoOath/YkneoOath.getLengthBytes(S)S
+					sadd;
+					sstore_2;
+					aload_1;
+					sload_2;
+					sload_3;
+					invokestatic 75;		// pkgYkneoOath/OathObj.findObject([BSS)LpkgYkneoOath/OathObj;
+					astore 4;
+				L5:	aload 4;
+					ifnull L7;
+				L6:	aload 4;
+					sconst_0;
+					invokevirtual 69;		// setActive(Z)V
+					goto L8;
+				L7:	sspush 27012;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L8:	return;
+		}
+
+		.method private calculateTotalLen()S {
+			.stack 3;
+			.locals 2;
+
+				L0:	sconst_0;
+					sstore_1;
+				L1:	getstatic_a 21;		// reference pkgYkneoOath/OathObj.firstObject
+					astore_2;
+				L2:	aload_2;
+					ifnull L7;
+				L3:	aload_2;
+					invokevirtual 24;		// isActive()Z
+					ifne L5;
+				L4:	goto L6;
+				L5:	sload_1;
+					aload_2;
+					invokevirtual 79;		// getNameLength()S
+					bspush 9;
+					sadd;
+					sadd;
+					sstore_1;
+				L6:	aload_2;
+					getfield_a 12;		// reference pkgYkneoOath/OathObj.nextObject
+					astore_2;
+					goto L2;
+				L7:	sload_1;
+					sreturn;
+		}
+
+		.method private handlePut([B)V {
+			.stack 6;
+			.locals 5;
+
+				L0:	sconst_5;
+					sstore_2;
+				L1:	aload_1;
+					sload_2;
+					sinc 2 1;
+					baload;
+					bspush 113;
+					if_scmpeq L3;
+				L2:	sspush 27264;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L3:	aload_0;
+					aload_1;
+					sload_2;
+					invokespecial 71;		// pkgYkneoOath/YkneoOath.getLength([BS)S
+					sstore_3;
+				L4:	sload_2;
+					aload_0;
+					sload_3;
+					invokespecial 73;		// pkgYkneoOath/YkneoOath.getLengthBytes(S)S
+					sadd;
+					sstore_2;
+					aload_0;
+					invokespecial 81;		// pkgYkneoOath/YkneoOath.calculateTotalLen()S
+					sload_3;
+					sadd;
+					bspush 9;
+					sadd;
+					sspush 2048;
+					if_scmple L6;
+				L5:	sspush 27268;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L6:	aload_1;
+					sload_2;
+					sload_3;
+					invokestatic 75;		// pkgYkneoOath/OathObj.findObject([BSS)LpkgYkneoOath/OathObj;
+					astore 4;
+				L7:	aload 4;
+					ifnonnull L9;
+				L8:	invokestatic 82;		// pkgYkneoOath/OathObj.getFreeObject()LpkgYkneoOath/OathObj;
+					astore 4;
+					aload 4;
+					aload_1;
+					sload_2;
+					sload_3;
+					invokevirtual 83;		// setName([BSS)V
+				L9:	sload_2;
+					sload_3;
+					sadd;
+					sstore_2;
+					aload_1;
+					sload_2;
+					sinc 2 1;
+					baload;
+					bspush 115;
+					if_scmpeq L11;
+				L10:	sspush 27264;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L11:	aload_0;
+					aload_1;
+					sload_2;
+					invokespecial 71;		// pkgYkneoOath/YkneoOath.getLength([BS)S
+					sstore_3;
+					sload_2;
+					aload_0;
+					sload_3;
+					invokespecial 73;		// pkgYkneoOath/YkneoOath.getLengthBytes(S)S
+					sadd;
+					sstore_2;
+					aload_1;
+					sload_2;
+					sinc 2 1;
+					baload;
+					sstore 5;
+				L12:	sload 5;
+					bspush 15;
+					sand;
+					sconst_1;
+					if_scmpeq L15;
+				L13:	sload 5;
+					bspush 15;
+					sand;
+					sconst_2;
+					if_scmpeq L15;
+				L14:	sspush 27264;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L15:	sload 5;
+					bspush -16;
+					sand;
+					bspush 32;
+					if_scmpeq L18;
+				L16:	sload 5;
+					bspush -16;
+					sand;
+					bspush 16;
+					if_scmpeq L18;
+				L17:	sspush 27264;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L18:	aload_1;
+					sload_2;
+					sinc 2 1;
+					baload;
+					sstore 6;
+				L19:	aload 4;
+					sconst_0;
+					invokevirtual 69;		// setActive(Z)V
+					aload 4;
+					sload 6;
+					invokevirtual 84;		// setDigits(B)V
+					aload 4;
+					aload_1;
+					sload_2;
+					sload 5;
+					sload_3;
+					sconst_2;
+					ssub;
+					invokevirtual 74;		// setKey([BSBS)V
+					sload_2;
+					sload_3;
+					sconst_2;
+					ssub;
+					sadd;
+					sstore_2;
+					sload_2;
+					aload_1;
+					arraylength;
+					if_scmpge L22;
+				L20:	aload_1;
+					sload_2;
+					baload;
+					bspush 120;
+					if_scmpne L22;
+				L21:	sinc 2 1;
+					aload 4;
+					aload_1;
+					sload_2;
+					sinc 2 1;
+					baload;
+					invokevirtual 85;		// setProp(B)V
+					goto L23;
+				L22:	aload 4;
+					sconst_0;
+					invokevirtual 85;		// setProp(B)V
+				L23:	sload_2;
+					aload_1;
+					arraylength;
+					if_scmpge L28;
+				L24:	aload_1;
+					sload_2;
+					baload;
+					bspush 122;
+					if_scmpne L28;
+				L25:	sinc 2 1;
+					aload_1;
+					sload_2;
+					sinc 2 1;
+					baload;
+					sconst_4;
+					if_scmpne L27;
+				L26:	aload 4;
+					aload_1;
+					sload_2;
+					invokevirtual 86;		// setImf([BS)V
+					sinc 2 4;
+					goto L29;
+				L27:	sspush 27264;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+					goto L29;
+				L28:	aload 4;
+					invokevirtual 87;		// clearImf()V
+				L29:	aload 4;
+					sconst_1;
+					invokevirtual 69;		// setActive(Z)V
+					return;
+		}
+
+		.method private getLength([BS)S {
+			.stack 3;
+			.locals 1;
+
+				L0:	sconst_0;
+					sstore_3;
+				L1:	aload_1;
+					sload_2;
+					baload;
+					bspush 127;
+					if_scmpgt L3;
+				L2:	aload_1;
+					sload_2;
+					baload;
+					sstore_3;
+					goto L8;
+				L3:	aload_1;
+					sload_2;
+					baload;
+					bspush -127;
+					if_scmpne L5;
+				L4:	aload_1;
+					sload_2;
+					sconst_1;
+					sadd;
+					baload;
+					sstore_3;
+					goto L8;
+				L5:	aload_1;
+					sload_2;
+					baload;
+					bspush -126;
+					if_scmpne L7;
+				L6:	aload_1;
+					sload_2;
+					sconst_1;
+					sadd;
+					invokestatic 67;		// javacard/framework/Util.getShort([BS)S
+					sstore_3;
+					goto L8;
+				L7:	sspush 27012;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L8:	sload_3;
+					sreturn;
+		}
+
+		.method private getLengthBytes(S)S {
+			.stack 2;
+			.locals 0;
+
+				L0:	sload_1;
+					sspush 128;
+					if_scmpge L2;
+				L1:	sconst_1;
+					sreturn;
+				L2:	sload_1;
+					sspush 255;
+					if_scmpgt L4;
+				L3:	sconst_2;
+					sreturn;
+				L4:	sconst_3;
+					sreturn;
+		}
+
+		.method private setLength([BSS)S {
+			.stack 4;
+			.locals 0;
+
+				L0:	sload_3;
+					sspush 128;
+					if_scmpge L2;
+				L1:	aload_1;
+					sload_2;
+					sload_3;
+					s2b;
+					bastore;
+					sconst_1;
+					sreturn;
+				L2:	sload_3;
+					sspush 255;
+					if_scmpgt L4;
+				L3:	aload_1;
+					sload_2;
+					sinc 2 1;
+					bspush -127;
+					bastore;
+					aload_1;
+					sload_2;
+					sload_3;
+					s2b;
+					bastore;
+					sconst_2;
+					sreturn;
+				L4:	aload_1;
+					sload_2;
+					sinc 2 1;
+					bspush -126;
+					bastore;
+					aload_1;
+					sload_2;
+					sload_3;
+					invokestatic 30;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					sconst_3;
+					sreturn;
+		}
+
+		.method private sendData(Ljavacard/framework/APDU;S)V {
+			.stack 5;
+			.locals 6;
+
+			.descriptor	Ljavacard/framework/APDU;	2.10;
+
+				L0:	aload_1;
+					invokevirtual 51;		// getBuffer()[B
+					astore_3;
+				L1:	invokestatic 88;		// javacard/framework/APDU.getOutBlockSize()S
+					sstore 4;
+				L2:	sload 4;
+					sstore 7;
+				L3:	getfield_a_this 16;		// reference pkgYkneoOath/YkneoOath.propBuf
+					sconst_1;
+					invokestatic 67;		// javacard/framework/Util.getShort([BS)S
+					sstore 8;
+				L4:	sload_2;
+					sload 4;
+					if_scmpge L6;
+				L5:	sload_2;
+					sstore 7;
+				L6:	getfield_a_this 15;		// reference pkgYkneoOath/YkneoOath.sendBuffer
+					sload 8;
+					aload_3;
+					sconst_0;
+					sload 7;
+					invokestatic 31;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					sload_2;
+					sload 4;
+					if_scmple L13;
+				L7:	sload_2;
+					sload 4;
+					ssub;
+					sstore 6;
+				L8:	sload 8;
+					sload 4;
+					sadd;
+					sstore 8;
+					sload 4;
+					sstore_2;
+					sload 6;
+					sload 4;
+					if_scmple L11;
+				L9:	sspush 24832;
+					sload 4;
+					sor;
+					sstore 5;
+				L10:	goto L15;
+				L11:	sspush 24832;
+					sload 6;
+					sor;
+					sstore 5;
+				L12:	goto L15;
+				L13:	sconst_0;
+					sstore 8;
+					sconst_0;
+					sstore 6;
+				L14:	sspush -28672;
+					sstore 5;
+				L15:	getfield_a_this 16;		// reference pkgYkneoOath/YkneoOath.propBuf
+					sconst_1;
+					sload 8;
+					invokestatic 30;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					getfield_a_this 16;		// reference pkgYkneoOath/YkneoOath.propBuf
+					sconst_3;
+					sload 6;
+					invokestatic 30;		// javacard/framework/Util.setShort([BSS)S
+					pop;
+					aload_1;
+					sconst_0;
+					sload_2;
+					invokevirtual 54;		// setOutgoingAndSend(SS)V
+					sload 5;
+					sspush -28672;
+					if_scmpeq L17;
+				L16:	sload 5;
+					invokestatic 39;		// javacard/framework/ISOException.throwIt(S)V
+				L17:	return;
+		}
+
+	}
+
+}
